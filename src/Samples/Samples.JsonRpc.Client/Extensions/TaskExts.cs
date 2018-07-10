@@ -17,7 +17,7 @@ namespace Dmo.Threading
 		/// <param name="task">The source task to wait for.</param>
 		/// <param name="timeoutMlsec">Represents the number of milliseconds to wait.</param>
 		/// <param name="cancelToken">A cancellation token to observe while waiting for the task to complete.</param>
-		/// <returns>A Task to wait for.</returns>
+		/// <returns>A Task that represents a proxy for the source task.</returns>
 		public static Task TimeoutAfter(this Task task,int timeoutMlsec,CancellationToken cancelToken = default) =>	
 			TimeoutAfterIntern(task,TimeSpan.FromMilliseconds(timeoutMlsec),cancelToken,null);
 
@@ -27,7 +27,7 @@ namespace Dmo.Threading
 		/// <param name="task">The source task to wait for.</param>
 		/// <param name="timeout">Represents a TimeSpan for the task to complete.</param>
 		/// <param name="cancelToken">A cancellation token to observe while waiting for the task to complete.</param>
-		/// <returns>A Task to wait for.</returns>
+		/// <returns>A Task that represents a proxy for the source task.</returns>
 		public static Task TimeoutAfter(this Task task,TimeSpan timeout,CancellationToken cancelToken = default) =>		
 			TimeoutAfterIntern(task,timeout,cancelToken,null);
 
@@ -37,7 +37,7 @@ namespace Dmo.Threading
 		/// <param name="task">The source task to wait for.</param>
 		/// <param name="timeoutMlsec">Represents the number of milliseconds to wait.</param>
 		/// <param name="cancelTokenSrc">A CancellationTokenSource that will be in the canceled state if a timeout occurs/param>
-		/// <returns>A Task to wait for.</returns>
+		/// <returns>A Task that represents a proxy for the source task.</returns>
 		public static Task CancelAfter(this Task task,int timeoutMlsec,CancellationTokenSource cancelTokenSrc = default) =>		
 			TimeoutAfterIntern(task,TimeSpan.FromMilliseconds(timeoutMlsec),cancelTokenSrc.TokenOrDefault(),cancelTokenSrc);
 
@@ -47,6 +47,7 @@ namespace Dmo.Threading
 		/// <param name="task">The source task to wait for.</param>
 		/// <param name="timeout">Represents a TimeSpan for the task to complete.</param>
 		/// <param name="cancelTokenSrc">A CancellationTokenSource that will be in the canceled state if a timeout occurs/param>
+		/// <returns>A Task that represents a proxy for the source task.</returns>
 		public static Task CancelAfter(this Task task,TimeSpan timeout,CancellationTokenSource cancelTokenSrc = default)
 		{			
 			return TimeoutAfterIntern(task,timeout,cancelTokenSrc.TokenOrDefault(),cancelTokenSrc);

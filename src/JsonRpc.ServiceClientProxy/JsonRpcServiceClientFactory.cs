@@ -20,7 +20,14 @@ namespace Community.JsonRpc.ServiceClient
 	{		
 		private static Lazy<ConcurrentDictionary<Type,Lazy<ServiceContractInfo>>> _svcCtrInfoDict =
 			new Lazy<ConcurrentDictionary<Type,Lazy<ServiceContractInfo>>>(() => new ConcurrentDictionary<Type,Lazy<ServiceContractInfo>>());
-				
+
+		/// <summary>
+		/// Extension method that Wraps an existing JsonRpcClient object with an explicit 
+		///  interface definition (Service Contract)
+		/// </summary>
+		/// <typeparam name="T">The type of the interface (Service Contract).</typeparam>
+		/// <param name="client">A JSON-RPC 2.0 service client</param>
+		/// <returns></returns>
 		public static T AsServiceContract<T>(this JsonRpcClient client)
 			where T : class
 		{
