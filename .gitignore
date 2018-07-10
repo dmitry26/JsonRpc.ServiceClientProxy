@@ -1,0 +1,9 @@
+bin/
+obj/
+*.nupkg
+.vs
+packages/
+*.suo
+*.user
+**/logs
+appsettings.Development.json

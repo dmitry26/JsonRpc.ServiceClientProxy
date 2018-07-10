@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <RootNamespace>Samples.JsonRpc.Client</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Community.JsonRpc.ServiceClient" Version="1.5.1" />
+    <PackageReference Include="ImpromptuInterface" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\JsonRpc.ServiceClientProxy\JsonRpc.ServiceClientProxy.csproj" />
+    <ProjectReference Include="..\Samples.JsonRpc.IService\Samples.JsonRpc.IService.csproj" />
+  </ItemGroup>
+
+</Project>
